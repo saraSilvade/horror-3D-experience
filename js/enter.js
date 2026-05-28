@@ -3,28 +3,43 @@ window.enterHouse = function () {
 
   const rig = document.querySelector("#rig");
 
-  const inside = document.querySelector("#inside-env");
-  const outside = document.querySelector("#haunted-house");
+  const outside = document.querySelector("#outside-world");
+  const inside = document.querySelector("#inside-world");
 
   const windSound = document.querySelector("#windSound");
   const insideSound = document.querySelector("#insideSound");
 
-  rig.setAttribute("position", "0 0 -3");
+  const outsideLights = document.querySelector("#outside-lights");
 
+  const scene = document.querySelector("a-scene");
+
+  const spawn = document.querySelector("#spawn-point");
+
+  // 🌍 ورود به دنیای داخل
   outside.setAttribute("visible", "false");
   inside.setAttribute("visible", "true");
 
+  // 🌫 حذف fog فقط هنگام ورود
+  scene.removeAttribute("fog");
+
+  // 💡 خاموش کردن نور بیرون
+  outsideLights.setAttribute("visible", "false");
+
+  // 🔊 قطع صدای بیرون
   windSound.pause();
-  insideSound.volume = 0.5;
+  windSound.currentTime = 0;
 
-  insideSound.play().catch(() => {});
+  // 🔊 صدای داخل
+  insideSound.volume = 0.6;
 
+  insideSound.play().catch((err) => {
+    console.log(err);
+  });
+
+  // 🚶 انتقال بازیکن
   setTimeout(() => {
-    const scareLight = document.querySelector("#scare-light");
-    scareLight.setAttribute("intensity", "3");
+    const worldPos = spawn.object3D.getWorldPosition(new THREE.Vector3());
 
-    setTimeout(() => {
-      scareLight.setAttribute("intensity", "0");
-    }, 800);
-  }, 500);
+    rig.object3D.position.copy(worldPos);
+  }, 100);
 };
