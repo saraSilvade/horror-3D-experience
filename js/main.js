@@ -1,19 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const doorTrigger = document.querySelector("#door-trigger");
+  const doorTrigger = document.querySelector("#doorTrigger");
   const scareLight = document.querySelector("#scare-light");
   const playerRig = document.querySelector("#rig");
-
-  // Listen for the user to click the invisible door box
-  doorTrigger.addEventListener("click", () => {
-    console.log("Door clicked! Moving inside...");
-
-    // 1. Teleport the player inside the house coordinates
-    // You will need to tweak these numbers based on where the inside of your model is!
-    playerRig.setAttribute("position", "0 0 -3");
-
-    // 2. Start the haunting events inside the house
-    triggerHaunting();
-  });
 
   function triggerHaunting() {
     // Wait 4 seconds after entering, then blink a scary light
@@ -27,6 +15,3 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 4000);
   }
 });
-
-// open the door
-document.getElementById("doorSound").play();
