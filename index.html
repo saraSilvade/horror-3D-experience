@@ -1,40 +1,130 @@
-
-<!DOCTYPE html >
+<!doctype html>
 <html>
   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>The Haunted House </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>The Haunted House</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/door.js" defer></script>
+    <script src="js/enter.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
- 
-     <div class="horror-vignette"></div>
-      <a-scene background="color: #0b132b" fog="type: exponential; color: #070f24; density: 0.03">
-   
+    <div class="horror-vignette"></div>
+    <div id="game-help">
+      <h2>THE HAUNTED HOUSE</h2>
+
+      <p>🖱 Click anywhere to begin</p>
+
+      <p>⌨ Use W A S D to move</p>
+
+      <p>🚪 Press E near the door</p>
+    </div>
+
+    <audio id="doorSound" src="sounds/door.mp3"></audio>
+
+    <a-scene
+      background="color: #0b132b"
+      fog="type: exponential; color: #070f24; density: 0.03"
+    >
+      <!-- Outside the house -->
       <a-assets>
-        <a-asset-item id="house-structure" src="models/house.glb"></a-asset-item>
+        <a-asset-item
+          id="house-structure"
+          src="models/house.glb"
+        ></a-asset-item>
       </a-assets>
-
-      <a-entity id="haunted-house" gltf-model="#house-structure" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 200 0" animation-mixer></a-entity>></a-entity>
-
-      <a-entity id="rig" position="0 0 4.5" movement-controls="fly: false">
-        <a-entity camera look-controls position="0 1.8 0">
-         
-          <a-light type="spot" color="#e0e1dd" intensity="2" angle="30" distance="20"></a-light>
-        </a-entity>
+      <a-entity id="outside-world">
+        <a-entity
+          id="haunted-house"
+          gltf-model="#house-structure"
+          position="0 0 0"
+          scale="0.5 0.5 0.5"
+          rotation="0 200 0"
+          animation-mixer
+        ></a-entity>
+        <audio id="windSound" loop>
+          <source src="sounds/wind.mp3" type="audio/mpeg" />
+        </audio>
       </a-entity>
 
-      <a-light type="ambient" color="#1c2541" intensity="0.3"></a-light>
+      <a-entity id="rig" position="0 0 8" movement-controls="fly: false">
+        <a-camera
+          look-controls="pointerLockEnabled: true"
+          wasd-controls="acceleration: 30"
+        ></a-camera>
+      </a-entity>
 
-     
+      <a-entity id="outside-lights">
+        <a-light type="ambient" color="#1c2541" intensity="0.3"></a-light>
+      </a-entity>
 
-      <a-light id="scare-light" type="point" color="#38bdf8" intensity="0" position="0 2 -3"></a-light>
+      <a-light
+        id="scare-light"
+        type="point"
+        color="#38bdf8"
+        intensity="0"
+        position="0 2 -3"
+      ></a-light>
 
+      <a-text
+        id="doorText"
+        value="Press E to open"
+        position="0 3 -4"
+        align="center"
+        color="#FFF"
+        visible="false"
+      >
+      </a-text>
+
+      <a-entity id="doorPivot" position="-1.8 0 -2">
+        <a-box
+          width="1"
+          height="2"
+          depth="0.1"
+          visible="false"
+          position="0 1 0"
+        ></a-box>
+      </a-entity>
+
+      <a-box
+        id="doorTrigger"
+        position="-1.8 0 0"
+        width="2"
+        height="3"
+        depth="2"
+        visible="false"
+      >
+      </a-box>
+      <!-- Inside House Environment -->
+
+      <a-assets>
+        <a-asset-item
+          id="corridorModel"
+          src="models/corridor.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-entity id="inside-world" visible="false">
+        <a-light
+          id="inside-light"
+          type="ambient"
+          color="#ffffff"
+          intensity="0.18"
+        >
+        </a-light>
+
+        <a-entity gltf-model="#corridorModel" position="0 0 -5" scale="1 1 1">
+        </a-entity>
+
+        <a-entity id="spawn-point" position="-5 0 0"> </a-entity>
+
+        <audio id="insideSound" loop>
+          <source src="sounds/inside-sound.mp3" type="audio/mpeg" />
+        </audio>
+      </a-entity>
     </a-scene>
-
   </body>
 </html>
