@@ -9,6 +9,8 @@
     <script src="js/main.js" defer></script>
     <script src="js/door.js" defer></script>
     <script src="js/enter.js" defer></script>
+    <script src="js/character.js"></script>
+    
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -24,6 +26,7 @@
     </div>
 
     <audio id="doorSound" src="sounds/door.mp3"></audio>
+  
 
     <a-scene
       background="color: #0b132b"
@@ -105,6 +108,7 @@
           id="corridorModel"
           src="models/corridor.glb"
         ></a-asset-item>
+        <a-asset-item id="phantom-model" src="models/ghost.glb"></a-asset-item>
       </a-assets>
 
       <a-entity id="inside-world" visible="false">
@@ -124,6 +128,18 @@
         <audio id="insideSound" loop>
           <source src="sounds/inside-sound.mp3" type="audio/mpeg" />
         </audio>
+     <audio id="doorOpenSound" src="sounds/door-opens.mp3"></audio>
+        <audio id="crySound" src="sounds/cry.mp3"></audio>
+        <!-- Character-->
+<a-entity id="corridor-phantom" 
+                  gltf-model="#phantom-model" 
+                  position="-6 0 -9.5" 
+                  scale="0.1 0.1 0.1" 
+                  rotation="0 25 0"
+                  visible="false"
+                  animation-mixer="clip: *; loop: repeat">
+        </a-entity>
+
       </a-entity>
     </a-scene>
   </body>
