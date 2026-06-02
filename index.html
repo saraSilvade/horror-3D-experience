@@ -151,7 +151,7 @@
           id="bloodyFloor"
           src="models/bloody-floor.glb"
         ></a-asset-item>
-        <a-asset-item id="ghostModel" src="models/ghost.glb"></a-asset-item>
+        <a-asset-item id="zombieModel" src="models/zombie.glb"></a-asset-item>
         <a-asset-item id="mirrorModel" src="models/mirror.glb"></a-asset-item>
         <a-asset-item
           id="scaryModel"
@@ -212,8 +212,8 @@
         </a-entity>
 
         <a-entity
-          id="ghost"
-          gltf-model="#ghostModel"
+          id="zombie"
+          gltf-model="#zombieModel"
           position="2 0.5 -2"
           scale="3 3 3"
           rotation="0 -90 0"
@@ -240,9 +240,6 @@
 
         <a-entity id="bathroom-spawn" position="0 1.9 22"> </a-entity>
 
-        <!-- <audio id="jumpScareSound">
-          <source src="sounds/scream.mp3" type="audio/mpeg" />
-        </audio> -->
         <a-entity
           id="scary-women"
           gltf-model="#scaryModel"
