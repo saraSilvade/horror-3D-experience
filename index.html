@@ -54,12 +54,25 @@
         </audio>
       </a-entity>
 
-      <a-entity id="rig" position="0 0 8" movement-controls="fly: false">
+      <!-- <a-entity id="rig" position="0 0 8" movement-controls="fly: false">
         <a-camera
           position="0 1.5 0"
           look-controls="pointerLockEnabled: true"
           wasd-controls="acceleration: 30"
         ></a-camera>
+      </a-entity> -->
+
+      <a-entity id="rig" position="0 0 8" movement-controls="fly: false">
+        <a-camera
+          position="0 1.5 0"
+          look-controls="pointerLockEnabled: true"
+          wasd-controls="acceleration: 30"
+        >
+        </a-camera>
+
+        <a-entity id="leftHand" laser-controls="hand: left"> </a-entity>
+
+        <a-entity id="rightHand" laser-controls="hand: right"> </a-entity>
       </a-entity>
 
       <a-entity id="outside-lights">
@@ -143,17 +156,6 @@
           animation-mixer="clip: *; loop: repeat"
         >
         </a-entity>
-
-        <!-- <a-entity
-          id="corridor-phantom"
-          gltf-model="#phantom-model"
-          position="-5 0 -8"
-          scale="0.5 0.5 0.5"
-          rotation="0 25 0"
-          visible="false"
-          animation-mixer="clip: *; loop: repeat"
-        >
-        </a-entity> -->
       </a-entity>
       <a-box
         id="bathroomDoor"
@@ -292,7 +294,7 @@
         >
         </a-light>
       </a-entity>
-      <a-box
+      <!-- <a-box
         id="bathroomDoor"
         position="-27 5 -34"
         width="4"
@@ -300,135 +302,7 @@
         depth="1"
         visible="false"
       >
-      </a-box>
-
-      <!-- Inside the room -->
-      <a-assets>
-        <a-asset-item id="bathroomRoom" src="models/bathroom.glb">
-        </a-asset-item>
-
-        <a-asset-item id="bathtubModel" src="models/bathtub.glb">
-        </a-asset-item>
-
-        <a-asset-item id="toiletModel" src="models/toilet.glb"> </a-asset-item>
-        <a-asset-item
-          id="bloodyFloor"
-          src="models/bloody-floor.glb"
-        ></a-asset-item>
-        <a-asset-item id="zombieModel" src="models/zombie.glb"></a-asset-item>
-        <a-asset-item id="mirrorModel" src="models/mirror.glb"></a-asset-item>
-        <a-asset-item
-          id="scaryModel"
-          src="models/scary-women.glb"
-        ></a-asset-item>
-      </a-assets>
-
-      <a-entity id="bathroom-world" visible="false">
-        <a-light
-          type="point"
-          color="#ff3333"
-          intensity="0.5"
-          distance="10"
-          position="0 2 0"
-        >
-        </a-light>
-
-        <a-light
-          type="point"
-          color="#aa0000"
-          intensity="0.3"
-          distance="6"
-          position="2 1 -2"
-        >
-        </a-light>
-
-        <a-entity
-          id="bathroom-room"
-          gltf-model="#bathroomRoom"
-          position="0 0 0"
-          scale="1 1 1"
-        >
-        </a-entity>
-
-        <a-entity
-          id="bathtub"
-          gltf-model="#bathtubModel"
-          position="0 0 -2"
-          rotation="0 90 0"
-          scale="1 1 1"
-        >
-        </a-entity>
-
-        <a-entity
-          id="toilet"
-          gltf-model="#toiletModel"
-          position="-6 0 -3"
-          rotation="0 25 0"
-          scale="4 4 4"
-        >
-        </a-entity>
-        <a-entity
-          id="bloody-floor"
-          gltf-model="#bloodyFloor"
-          position="0 0 0"
-          scale="3 3 3"
-        >
-        </a-entity>
-
-        <a-entity
-          id="zombie"
-          gltf-model="#zombieModel"
-          position="2 0.5 -2"
-          scale="3 3 3"
-          rotation="0 -90 0"
-        >
-        </a-entity>
-
-        <a-entity
-          id="mirror"
-          gltf-model="#mirrorModel"
-          position="-2 4 -5"
-          scale="1 1 1"
-          rotation="0 -90 0"
-        >
-        </a-entity>
-        <a-entity
-          id="scary-women"
-          gltf-model="#scaryModel"
-          position="-2 2 5"
-          scale="5 5 5"
-          rotation="0 -75 0"
-          visible="false"
-        >
-        </a-entity>
-
-        <a-entity id="bathroom-spawn" position="0 1.9 22"> </a-entity>
-
-        <a-entity
-          id="scary-women"
-          gltf-model="#scaryModel"
-          position="-2 2 5"
-          scale="5 5 5"
-          visible="false"
-        >
-        </a-entity>
-
-        <audio id="jumpScareSound">
-          <source src="sounds/scream.mp3" type="audio/mpeg" />
-        </audio>
-        <a-light
-          id="woman-light"
-          type="spot"
-          position="1 6 4"
-          color="#ffffff"
-          intensity="0"
-          angle="25"
-          penumbra="0.8"
-          distance="10"
-          target="#scary-women"
-        >
-        </a-light>
-      </a-entity>
+      </a-box> -->
     </a-scene>
   </body>
 </html>
