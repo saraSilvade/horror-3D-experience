@@ -15,6 +15,10 @@ window.enterHouse = function () {
 
   const spawn = document.querySelector("#spawn-point");
 
+  scene.setAttribute("background", "color: #000000");
+
+  scene.setAttribute("fog", "type: exponential; color: #000000; density: 0.15");
+
   outside.setAttribute("visible", "false");
   inside.setAttribute("visible", "true");
 
