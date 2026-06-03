@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!phantom || !isPlayerPhysicallyInside()) return;
     
     phantom.setAttribute('visible', 'true');
-    phantom.setAttribute('animation__reveal', 'property: scale; from: 0.1 0.1 0.1; to: 0.6 0.6 0.6; dur: 1800; easing: easeOutQuad');
+    phantom.setAttribute('animation__reveal', 'property: scale; from: 0.1 0.1 0.1; to: 3 3 3; dur: 1800; easing: easeOutQuad');
     
     console.log('JUMPSCARE: Ghost expanded into the corridor.');
   }
